@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-stone-300 text-neutral-950 p-5 max-w-[1750px] font-normal mx-auto">
+      <body className="bg-stone-300 text-neutral-950 p-5 mx-auto xs:max-w-[475px] sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px]">
         <Nav></Nav>
         {children}
       </body>
