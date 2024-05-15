@@ -3,3 +3,5 @@ const AboutMe = ()=>{
     <div>about me</div>
   )
 }
+
+export default AboutMe
