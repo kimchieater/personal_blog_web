@@ -11,6 +11,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width:{
+        '40ch':'40ch',
+        '30ch':'30ch',
+        '60ch':'60ch',
+      },
       keyframes:{
         slide:{
           "0%":{transform:'translateX(0%)'},

@@ -1,23 +1,25 @@
-import React from "react";
-import {SanityDocument} from 'next-sanity';
+import { SanityDocument } from "next-sanity";
+import { sanityFetch } from "@/sanity/client";
 
 
-interface LatestPostProps {
-  posts: SanityDocument[];
-}
 
 
-const LatestPost: React.FC<LatestPostProps> = ({posts}) =>{
+const POST_QUERY = `*[_type == "post"]{title, date, "text":content[].children[].text} | order(date desc)`
+
+const LatestPost = async () =>{
+  const post = await sanityFetch<SanityDocument[]>({query: POST_QUERY});
+
+  const summary = post[0].text[0].slice(0,200);
+
   return(
-    <div className="mt-[100px] border-solid border-4 border-neutral-900 grid grid-cols-1 grid-rows-10">
-      <div className="border-solid border-4 border-neutral-600 p-5 bg-red-700"></div>
-      <div className="border-solid border-4 border-neutral-600 p-5 bg-red-700"></div>
-      <div className="border-solid border-4 border-neutral-600 p-5 bg-red-700"></div>
-      <div className="border-solid border-4 border-neutral-600 p-5 bg-red-700"></div>
-      <div className="border-solid border-4 border-neutral-600 p-5 bg-red-700"></div>
-      
+    <div className="grid grid-cols-2 mt-[100px]">
+      <h1 className="font-bold text-3xl">{post[0].title}</h1>
+      <p className="w-40ch">{summary}</p>
+
+
+
     </div>
   )
 }
 
-export default LatestPost;
+export default LatestPost
