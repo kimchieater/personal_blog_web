@@ -11,7 +11,7 @@ import SanityLogo from "../svg/sanityLogo";
 const Hero = () =>{
   return(
     <div className="min-h-[400px] overflow-hidden flex mt-[100px] ">
-      <div className="max-h-[200px] animate-slide flex gap-[100px]"> 
+      <div className="max-h-[200px] animate-slide px-[50px] flex gap-[100px]"> 
         <HtmlLogo></HtmlLogo>  
         <CssLogo></CssLogo>
         <JsLogo></JsLogo>
@@ -21,7 +21,7 @@ const Hero = () =>{
         <NodeJsLogo></NodeJsLogo>
         <SanityLogo></SanityLogo>
       </div>
-      <div className="max-h-[200px] animate-slide flex gap-[100px]"> 
+      <div className="max-h-[200px] animate-slide flex px-[50px] gap-[100px]"> 
         <HtmlLogo></HtmlLogo>  
         <CssLogo></CssLogo>
         <JsLogo></JsLogo>
