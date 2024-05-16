@@ -5,13 +5,13 @@ import LatestPost from "./components/mainComp/latestpost/page";
 
 
 
-const POST_QUERY = `*[_type=="post"]`;
+
 
 
 
 export default async function Home() {
 
-  const posts = await sanityFetch<SanityDocument[]>({query: POST_QUERY});
+
 
 
 
