@@ -9,10 +9,11 @@ export default async function Home() {
 
   const posts = await sanityFetch<SanityDocument[]>({query: POST_QUERY});
 
-  
+  console.log(posts)
   return (
     <main className="mt-2">
       <Hero></Hero>
+      
     </main>
   );
 }

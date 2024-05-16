@@ -8,8 +8,7 @@ const Nav = () => {
       <Link href="/"><span className="font-bold text-xl">Code</span><span className="font-light">Chornicles</span></Link>
       <ul className="flex gap-10 text-lg">
         <Link href="/post">Posts</Link>
-        <Link href="/aboutme">About Me</Link>
-        <Link href="/dashboard" className="font-bold">Admin</Link>
+        <Link href="/aboutme" className="font-bold">About Me</Link>
       </ul>
     </div>
     <div className="flex gap-6 justify-stretch :">
