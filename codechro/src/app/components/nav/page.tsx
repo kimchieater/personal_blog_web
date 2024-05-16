@@ -5,7 +5,7 @@ const Nav = () => {
   return(
     <div>
     <div className="flex justify-between items-center leading-2 pb-5">
-      <Link href="/"><span className="font-bold text-xl">Code</span><span className="font-light">Chornicles</span></Link>
+      <Link href="/"><span className="font-bold text-xl">Code</span><span className="font-light">Chronicles</span></Link>
       <ul className="flex gap-10 text-lg">
         <Link href="/post">Posts</Link>
         <Link href="/aboutme" className="font-bold">About Me</Link>
