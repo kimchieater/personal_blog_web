@@ -11,7 +11,7 @@ const Nav = () => {
         <Link href="/aboutme" className="font-bold">About Me</Link>
       </ul>
     </div>
-    <div className="flex gap-6 justify-stretch :">
+    <div className="flex gap-6 justify-stretch">
         <div className="h-[1px] bg-neutral-950 flex-auto"></div>
         <div className="h-[1px] bg-neutral-950 flex-auto"></div>
       </div>

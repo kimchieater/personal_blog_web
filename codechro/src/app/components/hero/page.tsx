@@ -10,7 +10,7 @@ import SanityLogo from "../svg/sanityLogo";
 
 const Hero = () =>{
   return(
-    <div className="max-h-[200px] overflow-hidden flex mt-[100px] ">
+    <div className="max-h-[200px] overflow-hidden flex mt-[100px]">
       <div className=" animate-slide px-[50px] flex gap-[100px]"> 
         <HtmlLogo></HtmlLogo>  
         <CssLogo></CssLogo>
