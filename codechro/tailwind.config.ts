@@ -11,7 +11,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      theme:{
+      keyframes:{
+        slide:{
+          "0%":{transform:'translateX(0%)'},
+          '100%': {transform:'translateX(-100%)'}
+        },
+      },
+      animation:{
+        slide:'slide 5s infinite linear',
+      },
         screens:{
           'xs': "475px",
           'sm':"640px",
@@ -19,8 +27,7 @@ const config: Config = {
           'lg':"1024px",
           "xl":"1280px",
           '2xl':'1536px',
-        }
-      },
+        },
       fontFamily:{
         sans: ['Montserrat', ...fontFamily.sans],
       },

@@ -27,6 +27,27 @@ export default defineType({
             .slice(0, 200),
       },
     }),
+    defineField({
+      name: 'date',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'image',
+      type: 'image',
+    }),
+    defineField({
+      name: 'content',
+      type: 'array',
+      of: [{type: 'block'}],
+    }),
+    defineField({
+      name: 'tech',
+      type: 'string',
+      options: {
+        list: ['JS', 'REACT', 'NEXT', 'CSS', 'Node', 'FrontEnd', 'Backend', 'CompSci', 'HTML'],
+        layout: 'radio',
+      },
+    }),
     // Add other fields as needed
   ],
 })
