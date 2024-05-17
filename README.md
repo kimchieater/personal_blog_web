@@ -3,13 +3,13 @@
 
 # PROJECT Code Chronicles
 
-I'll be using NextJS/TAILWIND/TYPESCRIPT/SANITY/
+I'll be using NextJS/TAILWIND/TYPESCRIPT/SANITY
 
 and Will be deploying with Vercel.
 
 This will be my personal blog website/project.
 
-Goal is to have a working website where it authenticates me when I sign in. 
+Goal is to have a working website where It displays my Data. 
 
-and user can view my posts.
+and User can view my posts.
 

@@ -28,8 +28,8 @@ const PostCards = async () =>{
           
 
           return(
-            <div className="border-[1px] border-solid border-neutral-950 rounded-md" key="index">
-        <div className="flex justify-between p-5 border-b-[1px] border-solid border-neutral-950">
+            <div className="border-[1px] border-solid border-neutral-950 rounded-md" >
+        <div className="flex justify-between p-5 border-b-[1px] border-solid border-neutral-950" key={index}>
           <p>{new Date(post.date).toLocaleDateString()}</p>
           <Link href='/'>Read link</Link>
         </div>
@@ -38,7 +38,7 @@ const PostCards = async () =>{
           <div className="max-h-[120px] h-[120px]">
             
           </div>
-          <p>{post.text.slice(0,300)}</p>
+          <p>{post.text.slice(0,300)} ...</p>
         </div>
       </div>
           ) 
