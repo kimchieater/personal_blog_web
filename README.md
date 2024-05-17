@@ -3,7 +3,7 @@
 
 # PROJECT Code Chronicles
 
-I'll be using NextJS/TAILWIND/TYPESCRIPT/STRAPI/CLERK 
+I'll be using NextJS/TAILWIND/TYPESCRIPT/SANITY/
 
 and Will be deploying with Vercel.
 

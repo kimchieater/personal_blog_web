@@ -21,9 +21,14 @@ const config: Config = {
           "0%":{transform:'translateX(0%)'},
           '100%': {transform:'translateX(-100%)'}
         },
+        spread:{
+          '0%' : {opacity:'0'},
+          '100%': {opacity:'1'},
+        },
       },
       animation:{
-        slide:'slide 5s infinite linear',
+        slide:'slide 10s infinite linear',
+        spread:'spread .5s ease-in , '
       },
         screens:{
           'xs': "475px",
