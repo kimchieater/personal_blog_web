@@ -1,3 +1,4 @@
+import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 
 
@@ -21,14 +22,14 @@ const config: Config = {
           "0%":{transform:'translateX(0%)'},
           '100%': {transform:'translateX(-100%)'}
         },
-        spread:{
-          '0%' : {opacity:'0'},
-          '100%': {opacity:'1'},
-        },
+        fadeIn:{
+          "from": {opacity: '0', transform:'translateX(-50px)'},
+          'to' : {opacity: '1', transform:'translateX(0)'}
+        }
       },
       animation:{
         slide:'slide 10s infinite linear',
-        spread:'spread .5s ease-in , '
+        fadeIn:'.5s ease-in fadeIn'
       },
         screens:{
           'xs': "475px",

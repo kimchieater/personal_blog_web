@@ -8,14 +8,14 @@ const PostCards = async () =>{
   const post = await sanityFetch<SanityDocument[]>({query: POST_QUERY});
   
   return (
-    <div className="mt-10 grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 md:grid-rows-2">
-      <div className="border-[1px] border-solid border-neutral-950 ">
+    <div className="mt-10 grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 md:grid-rows-2 animate-fadeIn">
+      <div className="border-[1px] border-solid border-neutral-950 rounded-md">
         <div className="flex justify-between p-5 border-b-[1px] border-solid border-neutral-950">
           <p>date</p>
           <p>Read link</p>
         </div>
         <div className="p-5">
-          <h1 className="font-bold text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis omnis aut et odio molestiae pariatur aperiam atque voluptatum deleniti animi?</h1>
+          <h1 className="font-bold text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis omnis aut et odio molestiae pariatur.</h1>
           <div className="h-[120px]">
             image
           </div>

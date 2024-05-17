@@ -16,12 +16,12 @@ const LatestPost = async () =>{
 
 
   return(
-    <div className="mt-[100px]">
+    <div className="mt-[100px] animate-fadeIn">
       <div className="flex gap-6">
         <div className="h-[1px] bg-neutral-950 flex-auto"></div>
         <div className="h-[1px] bg-neutral-950 flex-auto"></div>
       </div>
-      <div className="grid grid-cols-2 mt-[100px] gap-5">
+      <div className="grid grid-cols-2 mt-[100px] gap-5 animate-fadeIn">
       <h1 className="font-bold text-3xl">{post[0].title}</h1>
       <p>{`${summary}...`}</p>
       </div>
