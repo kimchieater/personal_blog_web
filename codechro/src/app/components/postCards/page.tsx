@@ -1,27 +1,50 @@
 import { SanityDocument } from "next-sanity";
 import { sanityFetch } from "@/sanity/client";
+import Link from "next/link";
 
 
-const POST_QUERY = `*[_type == "post"]{title, date, "text":content[].children[].text} | order(date desc)`
+const POST_QUERY = `*[_type == "post"]{
+  _id,
+  "text": array::join(content[].children[].text, " "),
+  slug,
+  date,
+  title,
+  tech,
+  image,
+}|order(date desc)
+
+`
 
 const PostCards = async () =>{
-  const post = await sanityFetch<SanityDocument[]>({query: POST_QUERY});
+  const posts = await sanityFetch<SanityDocument[]>({query: POST_QUERY});
   
+
+  
+
   return (
     <div className="mt-10 grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 md:grid-rows-2 animate-fadeIn">
-      <div className="border-[1px] border-solid border-neutral-950 rounded-md">
+      {
+        posts.map((post, index)=>{
+          
+
+          return(
+            <div className="border-[1px] border-solid border-neutral-950 rounded-md" key="index">
         <div className="flex justify-between p-5 border-b-[1px] border-solid border-neutral-950">
-          <p>date</p>
-          <p>Read link</p>
+          <p>{new Date(post.date).toLocaleDateString()}</p>
+          <Link href='/'>Read link</Link>
         </div>
         <div className="p-5">
-          <h1 className="font-bold text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis omnis aut et odio molestiae pariatur.</h1>
-          <div className="h-[120px]">
-            image
+          <h1 className="font-bold text-2xl">{post.title}</h1>
+          <div className="max-h-[120px] h-[120px]">
+            
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic assumenda explicabo eos autem laboriosam temporibus nisi. Dicta quas omnis, est, ad animi alias vel cumque aut voluptatibus nemo dolorem, adipisci ratione quidem eum tenetur odio excepturi cum. Vitae, eius ex.</p>
+          <p>{post.text.slice(0,300)}</p>
         </div>
       </div>
+          ) 
+        })
+      }
+      
     </div>
   )
 }
