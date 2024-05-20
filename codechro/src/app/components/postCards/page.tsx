@@ -1,7 +1,8 @@
 import { SanityDocument } from "next-sanity";
-import { sanityFetch } from "@/sanity/client";
+import { client, sanityFetch } from "@/sanity/client";
 import Link from "next/link";
-
+import {SanityImageSource} from "@sanity/image-url/lib/types/types";
+import imageUrlBuilder from "@sanity/image-url";
 
 const POST_QUERY = `*[_type == "post"]{
   _id,
@@ -12,14 +13,28 @@ const POST_QUERY = `*[_type == "post"]{
   tech,
   image,
 }|order(date desc)
-
 `
+
+
+const { projectId, dataset } = client.config();
+
+
+export const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
 
 const PostCards = async () =>{
   const posts = await sanityFetch<SanityDocument[]>({query: POST_QUERY});
   
+  const {
+    title,
+    date,
+    image,
+    content,
+  } = posts;
 
-  
+
 
   return (
     <div className="mt-10 grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 md:grid-rows-2 animate-fadeIn">

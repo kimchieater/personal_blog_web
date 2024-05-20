@@ -13,3 +13,14 @@ Goal is to have a working website where It displays my Data.
 
 and User can view my posts.
 
+17th/05/2024
+
+I wanna complete 2 commits.
+
+
+1. I want image from the database to load up.
+
+2. I want to create dynamit routing for posts.
+
+
+for the first task I went with 
