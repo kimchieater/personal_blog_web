@@ -28,7 +28,7 @@ const PostCards = async () => {
           >
             <div className="flex justify-between p-5 border-b-[1px] border-solid border-neutral-950">
               <p>{new Date(post.date).toLocaleDateString()}</p>
-              <Link href={`/post/${post.slug.current}`}>Read more</Link>
+              <Link href={`/posts/${post.slug.current}`}>Read more</Link>
             </div>
             <div className="p-5">
               <h1 className="font-bold text-2xl">{post.title}</h1>
