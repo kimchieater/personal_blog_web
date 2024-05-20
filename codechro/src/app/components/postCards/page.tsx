@@ -16,7 +16,7 @@ const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
 
 const { projectId, dataset } = client.config();
 
-export const urlFor = (source: SanityImageSource | null) =>
+export const urlFor = (source: SanityImageSource) =>
   projectId && dataset
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
