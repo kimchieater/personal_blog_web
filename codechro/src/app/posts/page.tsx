@@ -29,7 +29,7 @@ const Posts = async ()=>{
           const summary = a.text.slice(0,200);
 
           return(
-            <div className="border-solid border rounded-sm border-neutral-950 p-2">
+            <div className="border-solid border rounded-sm border-neutral-950 p-2" key={a._id}>
             <h1>{a.title}</h1>
             <h3>{new Date(a.date).toLocaleDateString()}</h3>
             <div className="h-[100px] w-full object-cover">
