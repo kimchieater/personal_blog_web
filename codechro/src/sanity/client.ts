@@ -2,6 +2,10 @@ import "server-only";
 
 import { createClient, type QueryParams } from "next-sanity";
 
+import imageUrlBuilder from '@sanity/image-url';
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+
 
 export const client = createClient({
   projectId: "dfhzf4hs",
@@ -9,6 +13,15 @@ export const client = createClient({
   apiVersion: "2024-01-01",
   useCdn: false,
 });
+
+
+const builder = imageUrlBuilder(client);
+
+export function urlFor(source: SanityImageSource) {
+  return builder.image(source);
+}
+
+
 
 export async function sanityFetch<QueryResponse>({
   query,
@@ -19,10 +32,15 @@ export async function sanityFetch<QueryResponse>({
   params?: QueryParams;
   tags?: string[];
 }) {
-  return client.fetch<QueryResponse>(query, params, {
-    next: {
-      revalidate: process.env.NODE_ENV === 'development' ? 30 : 3600,
-      tags,
-    },
-  });
+  try {
+    return await client.fetch<QueryResponse>(query, params, {
+      next: {
+        revalidate: process.env.NODE_ENV === 'development' ? 30 : 3600,
+        tags,
+      },
+    });
+  } catch (error) {
+    console.error("Sanity fetch error:", error);
+    throw new Error("Failed to fetch data from Sanity");
+  }
 }

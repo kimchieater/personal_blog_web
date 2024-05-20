@@ -1,7 +1,7 @@
 import { SanityDocument } from "next-sanity";
 import { client, sanityFetch } from "@/sanity/client";
 import Link from "next/link";
-import {SanityImageSource} from "@sanity/image-url/lib/types/types";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import imageUrlBuilder from "@sanity/image-url";
 
 const POST_QUERY = `*[_type == "post"]{
@@ -11,57 +11,51 @@ const POST_QUERY = `*[_type == "post"]{
   date,
   title,
   tech,
-  image,
+  "imageUrl":image.asset->url,
 }|order(date desc)
-`
-
+`;
 
 const { projectId, dataset } = client.config();
 
-
-export const urlFor = (source: SanityImageSource) =>
+export const urlFor = (source: SanityImageSource | null) =>
   projectId && dataset
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
-const PostCards = async () =>{
-  const posts = await sanityFetch<SanityDocument[]>({query: POST_QUERY});
-  
-  const {
-    title,
-    date,
-    image,
-    content,
-  } = posts;
-
-
+const PostCards = async () => {
+  const posts = await sanityFetch<SanityDocument[]>({ query: POST_QUERY });
 
   return (
     <div className="mt-10 grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 md:grid-rows-2 animate-fadeIn">
-      {
-        posts.map((post, index)=>{
-          
-
-          return(
-            <div className="border-[1px] border-solid border-neutral-950 rounded-md" >
-        <div className="flex justify-between p-5 border-b-[1px] border-solid border-neutral-950" key={index}>
-          <p>{new Date(post.date).toLocaleDateString()}</p>
-          <Link href='/'>Read link</Link>
-        </div>
-        <div className="p-5">
-          <h1 className="font-bold text-2xl">{post.title}</h1>
-          <div className="max-h-[120px] h-[120px]">
-            
+      {posts.map((post) => {
+        const imageUrl = post.imageUrl ? urlFor(post.imageUrl) : null;
+        return (
+          <div
+            key={post._id} // Use _id for unique key
+            className="border-[1px] border-solid border-neutral-950 rounded-sm"
+          >
+            <div className="flex justify-between p-5 border-b-[1px] border-solid border-neutral-950">
+              <p>{new Date(post.date).toLocaleDateString()}</p>
+              <Link href={`/post/${post.slug.current}`}>Read more</Link>
+            </div>
+            <div className="p-5">
+              <h1 className="font-bold text-2xl">{post.title}</h1>
+              <div className="max-h-[120px] h-[120px] overflow-hidden my-5 rounded-sm">
+                {imageUrl && (
+                  <img
+                    src={imageUrl.width(800).url()}
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+              <p>{post.text.slice(0, 300)} ...</p>
+            </div>
           </div>
-          <p>{post.text.slice(0,300)} ...</p>
-        </div>
-      </div>
-          ) 
-        })
-      }
-      
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default PostCards
+export default PostCards;
