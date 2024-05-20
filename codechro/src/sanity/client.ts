@@ -1,4 +1,3 @@
-import "server-only";
 import { createClient, type QueryParams } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
@@ -13,6 +12,8 @@ export const client = createClient({
 const builder = imageUrlBuilder(client);
 
 export const urlFor = (source: SanityImageSource) => builder.image(source);
+
+
 
 export async function sanityFetch<QueryResponse>({
   query,

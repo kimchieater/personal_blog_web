@@ -1,8 +1,8 @@
 import { SanityDocument } from "next-sanity";
-import { client, sanityFetch } from "@/sanity/client";
+import { client, sanityFetch, urlFor } from "@/sanity/client";
 import Link from "next/link";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import imageUrlBuilder from "@sanity/image-url";
+
+
 
 const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
   _id,
@@ -14,17 +14,8 @@ const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
   "imageUrl": image.asset->url,
 }`;
 
-const { projectId, dataset } = client.config();
-
-export const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
-
 const PostCards = async () => {
   const posts = await sanityFetch<SanityDocument[]>({ query: POST_QUERY });
-
-  
 
   return (
     <div className="mt-10 grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 md:grid-rows-2 animate-fadeIn">
@@ -32,7 +23,7 @@ const PostCards = async () => {
         const imageUrl = post.imageUrl ? urlFor(post.imageUrl) : null;
         return (
           <div
-            key={post._id} // Use _id for unique key
+            key={post._id}
             className="border-[1px] border-solid border-neutral-950 rounded-sm"
           >
             <div className="flex justify-between p-5 border-b-[1px] border-solid border-neutral-950">
