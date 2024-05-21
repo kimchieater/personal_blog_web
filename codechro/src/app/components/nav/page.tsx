@@ -4,8 +4,8 @@ import Link from "next/link"
 const Nav = () => {
   return(
     <div className="">
-    <div className="flex justify-between items-center leading-2 pb-5">
-      <Link className="hover:tracking-[.6rem] transition-all duration-300" href="/"><span className="font-bold text-xl">Code</span><span className="font-light">Chronicles</span></Link>
+    <div className="flex justify-between items-center leading-2 pb-5 text-xs xs:text-lg">
+      <Link href="/"><span className="font-bold text-md xs:text-xl">Code</span><span className="font-light">Chronicles</span></Link>
       <ul className="flex gap-2 text-md">
         <Link href="/posts">Posts</Link>
         <Link href="/aboutme" className="font-bold">About Me</Link>

@@ -22,8 +22,23 @@ async function getPost(slug: string) {
   return post;
 }
 
+export async function fetchListNames(){
+  const query =  `*[_type == "post"] | order(date desc)[0...4] {
+  _id,
+  "text": array::join(content[].children[].text, " "),
+  slug,
+  date,
+  title,
+  tech,
+  "imageUrl": image.asset->url,
+}`;
+
+
+}
+
 export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
+  
   return (
     <article className="mt-10 px-10 animate-fadeIn">
       <div>

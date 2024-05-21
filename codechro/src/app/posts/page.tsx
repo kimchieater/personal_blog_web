@@ -1,7 +1,9 @@
 import { client, sanityFetch, urlFor } from "@/sanity/client"
+import { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder";
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
-
+import Footer from "../components/footer/page";
+import List from "../components/list/page";
 
 
 
@@ -20,39 +22,35 @@ const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
 const Posts = async ()=>{
 
   const posts = await sanityFetch<SanityDocument[]>({ query: POST_QUERY });
+  const imageUrl = posts[0].imageUrl ? urlFor(posts[0].imageUrl) : null;
+  const latestPost = posts[0];
   
   return(
-    <div className="grid grid-cols-1 mt-10 gap-5 animate-fadeIn">
-
+    <div>
+      <div>
+        <List posts={posts}></List>
+      </div>
+      <div className="grid grid-cols-2 gap-5 animate-fadeIn  mt-10">
       {
-        posts.map((a,i) => {
-          const imageUrl = a.imageUrl ? urlFor(a.imageUrl) : null;
-          const summary = a.text.slice(0,200);
+        posts.map((a,i) =>{
 
+          const summary = a.text.slice(0,100);
           return(
-            <div className="border-solid border rounded-sm border-neutral-950" key={a._id}>
-            <div className="border-b border-b-neutral-950">
-            <h1 className="p-2">{a.title}</h1>
-            </div>
-            <div className="flex justify-between p-2">
-            
-            <h3>{new Date(a.date).toLocaleDateString()}</h3>
-            <Link href={`/posts/${a.slug.current}`}>Read more</Link>
-            </div>
-            <div className="h-[100px] w-full object-cover">
-              {imageUrl && (
-                  <img
-                    src={imageUrl.url()}
-                    alt={a.title}
-                    className="w-full h-full object-cover"
-                  />
-                )}
-            </div>
-            <p className="p-2">{summary}...</p>
+            <div key={i} className="border border-neutral-950 py-2">
+              <div className="flex justify-between px-3 mb-2">
+              <h1 className="font-bold">{a.title}</h1>
+              <p>{new Date(a.date).toLocaleDateString()}</p>
+              </div>
+              <div className="h-[200px] max-h-[200px]">
+              <img src={a.imageUrl} className="object-cover w-[100%] h-[100%]"></img>
+              </div>
+              <p className="px-3">{summary}</p>
+              <Link href={`/posts/${a.slug.current}`} className="justify-end flex px-3 font-bold">Read More</Link>
             </div>
           )
         })
       }
+      </div>
     </div>
   )
 }

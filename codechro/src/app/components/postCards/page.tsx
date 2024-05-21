@@ -15,12 +15,17 @@ const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
 }`;
 
 const PostCards = async () => {
+
   const posts = await sanityFetch<SanityDocument[]>({ query: POST_QUERY });
 
   return (
     <div className="mt-10 grid grid-cols-1 grid-rows-1 gap-6 md:grid-cols-2 md:grid-rows-2 animate-fadeIn">
+      
       {posts.map((post) => {
+
         const imageUrl = post.imageUrl ? urlFor(post.imageUrl) : null;
+
+
         return (
           <div
             key={post._id}
