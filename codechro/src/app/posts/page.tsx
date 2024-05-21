@@ -1,8 +1,7 @@
-/* eslint-disable */
 import { sanityFetch } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
-import Link from "next/link";
 import List from "../components/list/page";
+import Link from "next/link";
 
 const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
   _id,
@@ -14,7 +13,12 @@ const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
   "imageUrl": image.asset->url,
 }`;
 
-const Posts = async () => {
+interface PageProps {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function Page({ params, searchParams }: PageProps) {
   const posts = await sanityFetch<SanityDocument[]>({ query: POST_QUERY });
 
   return (
@@ -44,6 +48,4 @@ const Posts = async () => {
       </div>
     </div>
   );
-};
-
-export default Posts;
+}
