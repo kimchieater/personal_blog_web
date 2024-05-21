@@ -35,7 +35,7 @@ const List: React.FC<ListProps> = ({posts}) =>{
         {
           posts.slice(startIndex, startIndex + itemsPerPage).map((a, i)=>{
             return(
-              <div className="flex">
+              <div className="flex" key={i}>
                 <Link href={`/posts/${a.slug.current}`} className="flex-1">{a.title}</Link>
                 <p className="flex-1">{new Date(a.date).toLocaleDateString()}</p>
                 <p className="flex-1">{a.tech}</p>

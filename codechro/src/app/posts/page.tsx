@@ -30,7 +30,7 @@ const Posts = async ()=>{
       <div>
         <List posts={posts}></List>
       </div>
-      <div className="grid grid-cols-2 gap-5 animate-fadeIn  mt-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 animate-fadeIn  mt-10">
       {
         posts.map((a,i) =>{
 
