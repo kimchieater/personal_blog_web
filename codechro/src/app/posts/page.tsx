@@ -1,9 +1,7 @@
-
 /* eslint-disable */
-import { sanityFetch, urlFor } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
-
 import List from "../components/list/page";
 
 const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
@@ -22,7 +20,7 @@ const Posts = async () => {
   return (
     <div>
       <div>
-        <List posts={posts}></List>
+        <List posts={posts} />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 animate-fadeIn mt-10">
         {posts.map((a, i) => {
