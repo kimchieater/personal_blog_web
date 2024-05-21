@@ -8,7 +8,7 @@ interface ListProps {
   posts: SanityDocument[];
 }
 
-const List = ({ posts }: ListProps) => {
+const List: React.FC<ListProps> = ({ posts }) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
 
@@ -58,5 +58,4 @@ const List = ({ posts }: ListProps) => {
   );
 };
 
-// Export the component as a default export with a type assertion
-export default List as unknown as (props: ListProps) => JSX.Element;
+export default List;
