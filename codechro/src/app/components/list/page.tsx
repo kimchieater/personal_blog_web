@@ -1,13 +1,16 @@
+
 'use client'
 
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
 import { useState } from "react";
 
+/* eslint-disable-next-line */
 interface ListProps {
   posts: SanityDocument[];
 }
 
+/* eslint-disable-next-line */
 const List: React.FC<ListProps> = ({ posts }) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
