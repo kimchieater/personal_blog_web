@@ -1,6 +1,16 @@
+
+
+
 const AboutMe = ()=>{
   return(
-    <div>about me</div>
+    <div className="grid grid-cols-2">
+      <div>
+        <img src="@/public/aboutMe.avif"></img>
+      </div>
+      <div>
+
+      </div>
+    </div>
   )
 }
 
