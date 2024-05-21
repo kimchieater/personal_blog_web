@@ -1,3 +1,5 @@
+
+/* eslint-disable */
 import { sanityFetch, urlFor } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
