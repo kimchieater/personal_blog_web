@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 /* eslint-disable-next-line */
-interface ListProps {
+export interface ListProps {
   posts: SanityDocument[];
 }
 
