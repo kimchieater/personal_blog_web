@@ -10,7 +10,7 @@ const AboutMe = ()=>{
         <Image src="/aboutMe.avif" width="500" height="500" className="rounded-md" alt=""></Image>
       </div>
       <div className="mt-8">
-        <h1 className="font-bold text-[2rem]">Mathew "Jason" Jeong - Web Developer, Software Engineer, and Kimchi Eater</h1>
+        <h1 className="font-bold text-[2rem]">Mathew Jason Jeong - Web Developer, Software Engineer, and Kimchi Eater</h1>
         
         <p className="mt-10"><span className="inline-block text-[2rem] ml-5">M</span>y name is Jason Jeong, and I am a passionate Web Developer. I have a deep love for coding and am always excited to learn more and build innovative solutions. My expertise lies in using modern technologies such as Next.js, Tailwind CSS, Express.js, MongoDB, and TypeScript. These tools enable me to create dynamic, responsive, and efficient web applications that meet the needs of users and businesses alike.</p>
         
