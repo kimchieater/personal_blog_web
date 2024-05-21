@@ -1,5 +1,6 @@
 import { client, sanityFetch, urlFor } from "@/sanity/client"
 import { SanityDocument } from "next-sanity";
+import Link from "next/link";
 
 
 
@@ -29,9 +30,15 @@ const Posts = async ()=>{
           const summary = a.text.slice(0,200);
 
           return(
-            <div className="border-solid border rounded-sm border-neutral-950 p-2" key={a._id}>
-            <h1>{a.title}</h1>
+            <div className="border-solid border rounded-sm border-neutral-950" key={a._id}>
+            <div className="border-b border-b-neutral-950">
+            <h1 className="p-2">{a.title}</h1>
+            </div>
+            <div className="flex justify-between p-2">
+            
             <h3>{new Date(a.date).toLocaleDateString()}</h3>
+            <Link href={`/posts/${a.slug.current}`}>Read more</Link>
+            </div>
             <div className="h-[100px] w-full object-cover">
               {imageUrl && (
                   <img
@@ -41,7 +48,7 @@ const Posts = async ()=>{
                   />
                 )}
             </div>
-            <p>{summary}...</p>
+            <p className="p-2">{summary}...</p>
             </div>
           )
         })
