@@ -20,6 +20,6 @@
       "@/sanity/*": ["src/sanity/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/list/page.js"],
   "exclude": ["node_modules"]
 }

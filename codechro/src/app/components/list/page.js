@@ -7,7 +7,7 @@ import { useState } from "react";
 
 
 
-const List: React.FC<SanityDocument> = ({ posts }) => {
+const List = ({ posts }) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
 
