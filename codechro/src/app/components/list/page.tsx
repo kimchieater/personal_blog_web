@@ -6,11 +6,8 @@ import { useState } from "react";
 
 
 
-export interface ListProps{
-  posts:SanityDocument[];
-}
 
-const List = ({ posts }: ListProps) => {
+const List = ({ posts }:any) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
 
@@ -31,7 +28,7 @@ const List = ({ posts }: ListProps) => {
   return (
     <div className="animate-fadeIn">
       <div className="mt-5">
-        {posts.slice(startIndex, startIndex + itemsPerPage).map((a, i) => (
+        {posts.slice(startIndex, startIndex + itemsPerPage).map((a:any, i:any) => (
           <div className="flex" key={i}>
             <Link href={`/posts/${a.slug.current}`} className="flex-1">
               {a.title}
