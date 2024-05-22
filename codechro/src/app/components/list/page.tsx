@@ -7,7 +7,7 @@ import { useState } from "react";
 
 
 
-const List = ({ posts }:any) => {
+const List = ({ posts }: {posts: SanityDocument[]}) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
 
@@ -17,7 +17,7 @@ const List = ({ posts }:any) => {
     }
   };
 
-  console.log(posts);
+
 
   const handlePrevious = () => {
     if (startIndex - itemsPerPage >= 0) {
@@ -28,7 +28,7 @@ const List = ({ posts }:any) => {
   return (
     <div className="animate-fadeIn">
       <div className="mt-5">
-        {posts.slice(startIndex, startIndex + itemsPerPage).map((a:any, i:any) => (
+        {posts.slice(startIndex, startIndex + itemsPerPage).map((a, i) => (
           <div className="flex" key={i}>
             <Link href={`/posts/${a.slug.current}`} className="flex-1">
               {a.title}
