@@ -8,7 +8,8 @@ interface ListProps {
   posts: SanityDocument[];
 }
 
-const List: React.FC<ListProps> = ({ posts }) => {
+
+const List = ({ posts }: ListProps) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
 
