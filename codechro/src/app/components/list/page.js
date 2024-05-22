@@ -7,12 +7,12 @@ import { useState } from "react";
 
 
 
-const List = ({ posts }) => {
+const List = ({ lists }) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
 
   const handleNext = () => {
-    if (startIndex + itemsPerPage < posts.length) {
+    if (startIndex + itemsPerPage < lists.length) {
       setStartIndex(startIndex + itemsPerPage);
     }
   };
@@ -26,7 +26,7 @@ const List = ({ posts }) => {
   return (
     <div className="animate-fadeIn">
       <div className="mt-5">
-        {posts.slice(startIndex, startIndex + itemsPerPage).map((a, i) => (
+        {lists.slice(startIndex, startIndex + itemsPerPage).map((a, i) => (
           <div className="flex" key={i}>
             <Link href={`/posts/${a.slug.current}`} className="flex-1">
               {a.title}
@@ -46,7 +46,7 @@ const List = ({ posts }) => {
           </button>
           <button
             onClick={handleNext}
-            disabled={startIndex + itemsPerPage >= posts.length}
+            disabled={startIndex + itemsPerPage >= lists.length}
             className="border border-neutral-950 rounded-sm py-2 px-3"
           >
             right
