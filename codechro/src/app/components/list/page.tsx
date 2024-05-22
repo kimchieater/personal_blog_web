@@ -1,15 +1,23 @@
 'use client'
 
+import { client } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 
 
+const List = () => {
 
-const List = ({ posts }: { posts : SanityDocument[]}) => {
+  const [posts, setPosts] = useState<SanityDocument[]>([])  
   const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 2;
+  const itemsPerPage = 5;
+  
+  useEffect(()=>{
+    client.fetch(`
+        *[_type == "post"]{title, "slug": slug.current, date, "text": array::join(content[].children[].text, " ")} | order(date desc)
+      `).then((data) => setPosts(data)).catch(console.error)
+  }, [])
 
 
   const handleNext = () => {
@@ -17,7 +25,6 @@ const List = ({ posts }: { posts : SanityDocument[]}) => {
       setStartIndex(startIndex + itemsPerPage);
     }
   };
-
 
 
   const handlePrevious = () => {

@@ -17,15 +17,12 @@ const POST_QUERY = `*[_type == "post"] | order(date desc)[0...4] {
 const Posts = async () => {
   const posts = await sanityFetch<SanityDocument[]>({ query: POST_QUERY });
 
-  const propPost = posts;
 
-
-  
 
   return (
     <div>
       <div>
-        <List posts = {propPost} />
+        <List></List>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 animate-fadeIn mt-10">
         {posts.map((a, i) => {
