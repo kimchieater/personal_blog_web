@@ -3,7 +3,7 @@
 import { client } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 
 
@@ -13,9 +13,9 @@ const List = () => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 5;
   
-  useEffect(()=>{
+  useLayoutEffect(()=>{
     client.fetch(`
-        *[_type == "post"]{title, "slug": slug.current, date, "text": array::join(content[].children[].text, " ")} | order(date desc)
+        *[_type == "post"]{title, "slug": slug.current, tech, date, "text": array::join(content[].children[].text, " ")} | order(date desc)
       `).then((data) => setPosts(data)).catch(console.error)
   }, [])
 
@@ -38,7 +38,7 @@ const List = () => {
       <div className="mt-5">
         {posts.slice(startIndex, startIndex + itemsPerPage).map((a, i) => (
           <div className="flex" key={i}>
-            <Link href={`/posts/${a.slug.current}`} className="flex-1">
+            <Link href={`/posts/${a.slug}`} className="flex-1">
               {a.title}
             </Link>
             <p className="flex-1">{new Date(a.date).toLocaleDateString()}</p>

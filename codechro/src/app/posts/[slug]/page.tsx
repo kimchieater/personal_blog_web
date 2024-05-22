@@ -2,6 +2,7 @@ import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import { fetchPost } from '@/sanity/fetchPost';
 import { client } from '@/sanity/client';
+import Link from 'next/link';
 
 // This function gets called at build time
 export async function generateStaticParams() {
@@ -30,8 +31,12 @@ export default async function PostPage({ params }: { params: { slug: string } })
   return (
     <article className="mt-10 px-10 animate-fadeIn">
       <div>
+      <Link href="/posts" className="underline">Go back</Link>
       <h1 className="text-[2rem] font-bold mb-3">{post.title}</h1>
+      <div>
       <p>{new Date(post.date).toLocaleDateString()}</p>
+
+      </div>
       </div>
       <div className="h-[300px] w-[100%] mt-5">
       { post.imageUrl && (
