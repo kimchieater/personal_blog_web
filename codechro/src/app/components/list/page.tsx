@@ -7,9 +7,10 @@ import { useState } from "react";
 
 
 
-const List = ({ posts }: {posts: SanityDocument[]}) => {
+const List = ({ posts }: { posts : SanityDocument[]}) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
+
 
   const handleNext = () => {
     if (startIndex + itemsPerPage < posts.length) {
