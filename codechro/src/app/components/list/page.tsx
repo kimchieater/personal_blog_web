@@ -4,7 +4,9 @@ import { SanityDocument } from "next-sanity";
 import Link from "next/link";
 import { useState } from "react";
 
-interface ListProps{
+
+
+export interface ListProps{
   posts:SanityDocument[];
 }
 
