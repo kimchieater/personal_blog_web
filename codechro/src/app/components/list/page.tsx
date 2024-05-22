@@ -4,10 +4,9 @@ import { SanityDocument } from "next-sanity";
 import Link from "next/link";
 import { useState } from "react";
 
-interface ListProps {
-  posts: SanityDocument[];
+interface ListProps{
+  posts:SanityDocument[];
 }
-
 
 const List = ({ posts }: ListProps) => {
   const [startIndex, setStartIndex] = useState(0);
@@ -18,6 +17,8 @@ const List = ({ posts }: ListProps) => {
       setStartIndex(startIndex + itemsPerPage);
     }
   };
+
+  console.log(posts);
 
   const handlePrevious = () => {
     if (startIndex - itemsPerPage >= 0) {
@@ -59,4 +60,4 @@ const List = ({ posts }: ListProps) => {
   );
 };
 
-export default List;
+export default List
