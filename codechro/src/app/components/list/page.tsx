@@ -1,13 +1,14 @@
-
 'use client'
 
 import { SanityDocument } from "next-sanity";
 import Link from "next/link";
 import { useState } from "react";
 
+interface ListProps {
+  posts: SanityDocument[];
+}
 
-
-const List = ({ posts }) => {
+const List: React.FC<ListProps> = ({ posts }) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 2;
 
